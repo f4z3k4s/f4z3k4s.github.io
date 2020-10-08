@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent</title>
+  </head>
+  <body>
+    <div>parent</div>
+    <iframe id="child" sandbox="allow-same-origin" src="child.html"></iframe>
+
+    <script>
+      const child = document.querySelector('#child');
+      child.onload = (event) => {
+        const errorJSON = child.contentDocument.querySelector('#error')
+          .innerHTML;
+        const error = JSON.parse(errorJSON);
+        console.log(error);
+      };
+    </script>
+  </body>
+</html>
